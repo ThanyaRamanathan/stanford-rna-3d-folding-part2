@@ -70,9 +70,9 @@ test_sequences.csv
 
 | Version | Public LB Score | Key Changes |
 |---|---|---|
-| **v2** (baseline) | **0.354** | Custom BioPython TBM (global alignment, train data only), `N_sample=1`, `max_len=1000` |
-| v3 | 0.302 ❌ | Switched to local alignment + relaxed length filter + validation templates → degraded TBM quality fed into RNAPro |
-| **v4** (in progress) | **TBD** | jaejohn PDB-searched templates for Part 2 targets, `N_sample=5`, `max_len=1500` |
+| **v1** (baseline) | **0.334** | Custom BioPython TBM (global alignment, train data only), `N_sample=1`, `max_len=1000` |
+| **v2** | **0.489** | Switched to local alignment + relaxed length filter + validation templates → degraded TBM quality fed into RNAPro |
+| **v3** | **0.413** | jaejohn PDB-searched templates for Part 2 targets, `N_sample=5`, `max_len=1500` |
 
 **What v3 taught us:** Template quality fed into RNAPro's embedder is the single most important variable. Switching to local (Smith-Waterman) alignment and relaxing the sequence length filter caused the TBM to select weaker, noisier templates — and since those feed directly into RNAPro as structural priors, the entire pipeline degraded. Better-sounding algorithm design ≠ better results without empirical validation at each stage.
 
